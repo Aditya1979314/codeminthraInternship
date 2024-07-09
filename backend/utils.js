@@ -1,7 +1,9 @@
 const {Client} = require("pg");
+require('dotenv').config()
+
 
  async function dbfunc(){
-    const client = new Client("postgresql://adityadb_owner:4OLGmHio6rWk@ep-late-recipe-a1p0ibki.ap-southeast-1.aws.neon.tech/adityadb?sslmode=require");
+    const client = new Client(`postgresql://adityadb_owner:${process.env.secret}@ep-late-recipe-a1p0ibki.ap-southeast-1.aws.neon.tech/adityadb?sslmode=require`);
     await client.connect();
     console.log("database connected");
     return client;
